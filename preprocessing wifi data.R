@@ -24,6 +24,7 @@ wifi_complete <- rbind(wifi_data, wifi_data_validation)
 dim(wifi_data)  # 19937 530
 dim(wifi_data_validation)  # 1111  530    we have same number of variables in training and validation data set
 
+
 head(wifi_data[,520:529],2)
 summary(wifi_data[,510:529])
 str(wifi_data[,510:529])
@@ -76,7 +77,7 @@ wifi_data_validation$BUILDINGID <- recode(wifi_data_validation$BUILDINGID, '0'=1
 #Wifi validation data
 wifi_data_validation$FLOOR <- as.factor(wifi_data_validation$FLOOR)
 wifi_data_validation$BUILDINGID <- as.factor(wifi_data_validation$BUILDINGID)
-wifi_data_validation$RELATIVEPOSITION <- wifi_data_validation(wifi_data$RELATIVEPOSITION)
+wifi_data_validation$RELATIVEPOSITION <- as.factor(wifi_data_validation$RELATIVEPOSITION)
 wifi_data_validation$USERID <- as.factor(wifi_data_validation$USERID)
 wifi_data_validation$PHONEID <- as.factor(wifi_data_validation$PHONEID)
 
@@ -148,6 +149,8 @@ wifi_Data_Gathered %>%
 
 
 
-write.csv(wifi_data_u, file = "FilteredWifiData.csv")
+
+write.csv(wifi_data_zero_V, file = "FilteredWifiDatatraning.csv")
+write.csv(wifi_validation_zero_V, file = "FilteredWifiDatatesting.csv")
 
 
